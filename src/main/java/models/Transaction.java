@@ -1,25 +1,32 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.Objects;
 
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Transaction {
     private final TransactionType type;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+                pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private final Date date;
     private final float amount;
-    private String description = "";
+    private final String description;
 
-    public Transaction(String type, Date date, float amount, String description) {
+    @JsonCreator
+    public Transaction(@JsonProperty("type") String type,
+                       @JsonProperty("date") Date date,
+                       @JsonProperty("amount") float amount,
+                       @JsonProperty("description") String description) {
         this.type = TransactionType.valueOf(type);
         this.date = date;
         this.amount = amount;
         this.description = description;
-    }
-
-    public Transaction(String type, Date date, float amount) {
-        this.type = TransactionType.valueOf(type);
-        this.date = date;
-        this.amount = amount;
     }
 
     public TransactionType getType() {

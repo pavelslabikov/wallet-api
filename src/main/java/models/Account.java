@@ -1,16 +1,24 @@
 package models;
 
+import com.fasterxml.jackson.annotation.*;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+
 public class Account {
     private final List<Transaction> transactions;
+
     private final int number;
     private float balance;
 
-    public Account(int number, float balance) {
-        this.transactions = new ArrayList<>();
+    @JsonCreator
+    public Account(@JsonProperty("number") int number,
+                   @JsonProperty("balance") float balance,
+                   @JsonProperty("transactions") List<Transaction> transactions) {
+        this.transactions = Objects.requireNonNullElseGet(transactions, ArrayList::new);
         this.number = number;
         this.balance = balance;
     }
@@ -32,6 +40,10 @@ public class Account {
 
     public float getBalance() {
         return balance;
+    }
+
+    public List<Transaction> getTransactions() {
+        return Collections.unmodifiableList(transactions);
     }
 
     @Override

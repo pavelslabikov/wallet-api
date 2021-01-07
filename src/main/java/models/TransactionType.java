@@ -1,5 +1,8 @@
 package models;
 
+import org.codehaus.jackson.annotate.JsonValue;
+
+
 public enum TransactionType {
     INCOME("income"), OUTCOME("outcome");
 
@@ -9,7 +12,8 @@ public enum TransactionType {
         this.type = type;
     }
 
-    public String getRepresentation() {  // TODO: Rename
+    @JsonValue
+    public String getType() {  // TODO: Rename
         return type;
     }
 }
