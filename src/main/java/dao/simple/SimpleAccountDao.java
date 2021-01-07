@@ -15,9 +15,13 @@ public class SimpleAccountDao implements AccountDao {
         storage.add(account);
     }
 
-    public void deleteAccount(Account account) {
-        storage.remove(account);
+    @Override
+    public void deleteAccountByNumber(int number) {
+        var accountToDelete = getByNumber(number);
+        if (accountToDelete != null)
+            storage.remove(accountToDelete);
     }
+
 
     public Account getByNumber(int number) {
         for (var account : storage)
@@ -25,5 +29,10 @@ public class SimpleAccountDao implements AccountDao {
                 return account;
 
         return null;
+    }
+
+    @Override
+    public Set<Account> getAllAccounts() {
+        return storage;
     }
 }
