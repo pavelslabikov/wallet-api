@@ -15,9 +15,9 @@ public class Account {
     private float balance;
 
     @JsonCreator
-    public Account(@JsonProperty("number") int number,
-                   @JsonProperty("balance") float balance,
-                   @JsonProperty("transactions") List<Transaction> transactions) {
+    public Account(@JsonProperty(value = "number", required = true) int number,
+                   @JsonProperty(value = "balance", required = true) float balance,
+                   @JsonProperty(value = "transactions") List<Transaction> transactions) {
         this.transactions = Objects.requireNonNullElseGet(transactions, ArrayList::new);
         this.number = number;
         this.balance = balance;
