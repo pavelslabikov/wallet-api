@@ -1,6 +1,8 @@
 package controllers;
 
 import dao.AccountDao;
+import exceptions.AccountAlreadyExistException;
+import exceptions.AccountNotFoundException;
 import models.Account;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +19,11 @@ public class AccountController {
 
     @GetMapping("{number}")
     public Account getAccount(@PathVariable Integer number) {
-        return accountDao.getByNumber(number);
+        var foundAccount = accountDao.getByNumber(number);
+        if (foundAccount == null)
+            throw new AccountNotFoundException();
+
+        return foundAccount;
     }
 
     @GetMapping("/")
@@ -27,6 +33,9 @@ public class AccountController {
 
     @PostMapping("/")
     public void createAccount(@RequestBody Account account) {
+        if (accountDao.hasAccount(account))
+            throw new AccountAlreadyExistException();
+
         accountDao.createAccount(account);
     }
 

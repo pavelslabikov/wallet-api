@@ -15,13 +15,13 @@ public class Transaction {
     @JsonFormat(shape = JsonFormat.Shape.STRING,
                 pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private final Date date;
-    private final float amount;
+    private final Float amount;
     private final String description;
 
     @JsonCreator
-    public Transaction(@JsonProperty("type") String type,
-                       @JsonProperty("date") Date date,
-                       @JsonProperty("amount") float amount,
+    public Transaction(@JsonProperty(value = "type", required = true) String type,
+                       @JsonProperty(value = "date", required = true) Date date,
+                       @JsonProperty(value = "amount", required = true) float amount,
                        @JsonProperty("description") String description) {
         this.type = TransactionType.valueOf(type);
         this.date = date;

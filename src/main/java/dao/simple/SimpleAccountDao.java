@@ -35,4 +35,9 @@ public class SimpleAccountDao implements AccountDao {
     public Set<Account> getAllAccounts() {
         return storage;
     }
+
+    @Override
+    public boolean hasAccount(Account account) {
+        return storage.contains(account);
+    }
 }
