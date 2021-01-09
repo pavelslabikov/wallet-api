@@ -1,20 +1,14 @@
-package config;
+package core.config;
 
-import dao.AccountDao;
-import dao.simple.SimpleAccountDao;
-
-import models.Account;
-
+import core.dao.AccountDao;
+import core.dao.simple.SimpleAccountDao;
+import core.models.Account;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.HashSet;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan("controllers")
 public class WebConfig {
     @Bean
     public AccountDao accountDao() {

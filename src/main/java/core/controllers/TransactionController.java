@@ -1,9 +1,10 @@
-package controllers;
+package core.controllers;
 
 
-import dao.AccountDao;
-import exceptions.AccountNotFoundException;
-import models.Transaction;
+import core.dao.AccountDao;
+import core.dao.BaseDaoFactory;
+import core.exceptions.AccountNotFoundException;
+import core.models.Transaction;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +14,8 @@ import java.util.List;
 public class TransactionController {
     private final AccountDao accountDao;
 
-    public TransactionController(AccountDao accountDao) {
-        this.accountDao = accountDao;
+    public TransactionController(BaseDaoFactory factory) {
+        this.accountDao = factory.createAccountDao();
     }
 
     @GetMapping("transactions")

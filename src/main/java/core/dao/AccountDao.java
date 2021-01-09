@@ -1,6 +1,6 @@
-package dao;
+package core.dao;
 
-import models.Account;
+import core.models.Account;
 import org.springframework.lang.Nullable;
 
 import java.util.Set;

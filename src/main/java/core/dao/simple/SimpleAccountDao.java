@@ -1,7 +1,8 @@
-package dao.simple;
+package core.dao.simple;
 
-import dao.AccountDao;
-import models.Account;
+import core.dao.AccountDao;
+import core.models.Account;
+
 import java.util.Set;
 
 public class SimpleAccountDao implements AccountDao {

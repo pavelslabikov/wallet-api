@@ -1,9 +1,10 @@
-package controllers;
+package core.controllers;
 
-import dao.AccountDao;
-import exceptions.AccountAlreadyExistException;
-import exceptions.AccountNotFoundException;
-import models.Account;
+import core.dao.AccountDao;
+import core.dao.BaseDaoFactory;
+import core.exceptions.AccountAlreadyExistException;
+import core.exceptions.AccountNotFoundException;
+import core.models.Account;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -13,8 +14,8 @@ import java.util.Set;
 public class AccountController {
     private final AccountDao accountDao;
 
-    public AccountController(AccountDao accountDao) {
-        this.accountDao = accountDao;
+    public AccountController(BaseDaoFactory factory) {
+        this.accountDao = factory.createAccountDao();
     }
 
     @GetMapping("{number}")

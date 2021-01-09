@@ -1,6 +1,6 @@
-package models;
+package core.models;
 
-import org.codehaus.jackson.annotate.JsonValue;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 
 public enum TransactionType {
