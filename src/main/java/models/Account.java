@@ -9,16 +9,18 @@ import java.util.Objects;
 
 
 public class Account {
+    @JsonIgnore
     private final List<Transaction> transactions;
-
     private final int number;
     private float balance;
 
     @JsonCreator
     public Account(@JsonProperty(value = "number", required = true) int number,
-                   @JsonProperty(value = "balance", required = true) float balance,
-                   @JsonProperty(value = "transactions") List<Transaction> transactions) {
-        this.transactions = Objects.requireNonNullElseGet(transactions, ArrayList::new);
+                   @JsonProperty(value = "balance", required = true) float balance) {
+        if (number <= 0 || balance < 0)
+            throw new IllegalArgumentException();
+
+        this.transactions = new ArrayList<>();
         this.number = number;
         this.balance = balance;
     }

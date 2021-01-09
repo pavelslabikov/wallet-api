@@ -2,7 +2,6 @@ package dao.simple;
 
 import dao.AccountDao;
 import dao.BaseDaoFactory;
-import dao.TransactionDao;
 import models.Account;
 
 public class SimpleDaoFactory extends BaseDaoFactory {
@@ -12,8 +11,4 @@ public class SimpleDaoFactory extends BaseDaoFactory {
         return null;
     }
 
-    @Override
-    public TransactionDao createTransactionDao() {
-        return null;
-    }
 }

@@ -1,9 +1,7 @@
 package config;
 
 import dao.AccountDao;
-import dao.TransactionDao;
 import dao.simple.SimpleAccountDao;
-import dao.simple.SimpleTransactionDao;
 
 import models.Account;
 
@@ -21,11 +19,6 @@ public class WebConfig {
     @Bean
     public AccountDao accountDao() {
         return new SimpleAccountDao(accounts());
-    }
-
-    @Bean
-    public TransactionDao transactionDao() {
-        return new SimpleTransactionDao(accounts());
     }
 
     @Bean
