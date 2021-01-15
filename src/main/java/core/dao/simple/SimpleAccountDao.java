@@ -3,7 +3,7 @@ package core.dao.simple;
 import core.dao.AccountDao;
 import core.models.Account;
 
-import java.util.Set;
+import java.util.*;
 
 public class SimpleAccountDao implements AccountDao {
     private final Set<Account> storage;
@@ -12,6 +12,7 @@ public class SimpleAccountDao implements AccountDao {
         this.storage = storage;
     }
 
+    @Override
     public void createAccount(Account account) {
         storage.add(account);
     }
@@ -23,7 +24,7 @@ public class SimpleAccountDao implements AccountDao {
             storage.remove(accountToDelete);
     }
 
-
+    @Override
     public Account getByNumber(int number) {
         for (var account : storage)
             if (account.getNumber() == number)
@@ -33,12 +34,10 @@ public class SimpleAccountDao implements AccountDao {
     }
 
     @Override
-    public Set<Account> getAllAccounts() {
-        return storage;
+    public List<Account> getAllAccounts() {
+        return new ArrayList<>(storage);
     }
 
     @Override
-    public boolean hasAccount(Account account) {
-        return storage.contains(account);
-    }
+    public void updateAccount(Account account) { }
 }
