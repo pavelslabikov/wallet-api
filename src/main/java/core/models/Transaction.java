@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Transaction {
     private final TransactionType type;
     @JsonFormat(shape = JsonFormat.Shape.STRING,
@@ -23,7 +23,7 @@ public class Transaction {
                        @JsonProperty(value = "date", required = true) Date date,
                        @JsonProperty(value = "amount", required = true) float amount,
                        @JsonProperty("description") String description) {
-        this.type = TransactionType.valueOf(type);
+        this.type = TransactionType.valueOf(type.toUpperCase());  // TODO: Fix case
         this.date = date;
         this.amount = amount;
         this.description = description;
