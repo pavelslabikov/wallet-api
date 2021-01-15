@@ -1,28 +1,21 @@
 package core.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
 
 
 public class Account {
-    @JsonIgnore
-    private final List<Transaction> transactions;
     private final int number;
     private float balance;
 
     @JsonCreator
     public Account(@JsonProperty(value = "number", required = true) int number,
                    @JsonProperty(value = "balance", required = true) float balance) {
-        if (number <= 0 || balance < 0)
-            throw new IllegalArgumentException();
+        if (number <= 0)
+            throw new IllegalArgumentException("Number cannot be negative");
 
-        this.transactions = new ArrayList<>();
         this.number = number;
         this.balance = balance;
     }
@@ -30,7 +23,6 @@ public class Account {
     public void addTransaction(Transaction transaction) {
         if (transaction == null)
             throw new IllegalArgumentException("Transaction cannot be null");
-        transactions.add(transaction);
 
         if (transaction.getType() == TransactionType.INCOME)
             balance += transaction.getAmount();
@@ -44,10 +36,6 @@ public class Account {
 
     public float getBalance() {
         return balance;
-    }
-
-    public List<Transaction> getTransactions() {
-        return Collections.unmodifiableList(transactions);
     }
 
     @Override
