@@ -1,6 +1,7 @@
 package core.dao;
 
 import core.models.Transaction;
+
 import java.util.List;
 
 public interface TransactionDao {

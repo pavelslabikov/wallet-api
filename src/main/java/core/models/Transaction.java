@@ -26,7 +26,7 @@ public class Transaction {
         this.type = TransactionType.valueOf(type.toUpperCase());  // TODO: Fix case
         this.date = date;
         this.amount = amount;
-        this.description = description;
+        this.description = Objects.requireNonNullElse(description, "");
     }
 
     public TransactionType getType() {

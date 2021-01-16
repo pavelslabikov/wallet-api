@@ -2,6 +2,7 @@ package core.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.util.Assert;
 
 import java.util.Objects;
 
@@ -21,9 +22,7 @@ public class Account {
     }
 
     public void addTransaction(Transaction transaction) {
-        if (transaction == null)
-            throw new IllegalArgumentException("Transaction cannot be null");
-
+        Assert.notNull(transaction, "Transaction required");
         if (transaction.getType() == TransactionType.INCOME)
             balance += transaction.getAmount();
         else
