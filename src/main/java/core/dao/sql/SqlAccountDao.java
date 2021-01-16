@@ -2,23 +2,20 @@ package core.dao.sql;
 
 import core.dao.AccountDao;
 import core.models.Account;
-import core.models.Transaction;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+@Primary
 public class SqlAccountDao implements AccountDao {
     private final JdbcTemplate accountDb;
 
-    private final RowMapper<Account> accountRowMapper = (resultSet, i) -> {
-        var number = resultSet.getInt("AccountNumber");
-        var balance = resultSet.getFloat("Balance");
-        return new Account(number, balance);
-    };
-
-    public SqlAccountDao(JdbcTemplate template) {
+    public SqlAccountDao(@Qualifier("accountDbTemplate") JdbcTemplate template) {
         this.accountDb = template;
     }
 
@@ -38,7 +35,7 @@ public class SqlAccountDao implements AccountDao {
         Account account = null;
         try {
             account = accountDb.queryForObject("SELECT * FROM accounts WHERE \"AccountNumber\" = ?",
-                    accountRowMapper, number);
+                    Mappers.accountRowMapper, number);
         } catch (DataAccessException ignored) {
 
         }
@@ -48,7 +45,7 @@ public class SqlAccountDao implements AccountDao {
 
     @Override
     public List<Account> getAllAccounts() {
-        return accountDb.query("SELECT * FROM accounts", accountRowMapper);
+        return accountDb.query("SELECT * FROM accounts", Mappers.accountRowMapper);
     }
 
     @Override
