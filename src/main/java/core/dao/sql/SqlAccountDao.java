@@ -44,8 +44,9 @@ public class SqlAccountDao implements AccountDao {
     }
 
     @Override
-    public List<Account> getAllAccounts() {
-        return accountDb.query("SELECT * FROM accounts", Mappers.accountRowMapper);
+    public Account[] getAllAccounts() {
+        return (Account[]) accountDb.query("SELECT * FROM accounts", Mappers.accountRowMapper)
+                .toArray();
     }
 
     @Override

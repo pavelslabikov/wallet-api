@@ -9,6 +9,6 @@ public interface AccountDao {
     void createAccount(Account account);
     void deleteAccountByNumber(int number);
     @Nullable Account getByNumber(int number);
-    List<Account> getAllAccounts();
+    Account[] getAllAccounts();
     void updateAccount(Account account);
 }

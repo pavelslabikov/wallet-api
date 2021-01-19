@@ -38,8 +38,8 @@ public class SimpleAccountDao implements AccountDao {
     }
 
     @Override
-    public List<Account> getAllAccounts() {
-        return new ArrayList<>(storage);
+    public Account[] getAllAccounts() {
+        return (Account[]) storage.toArray();
     }
 
     @Override

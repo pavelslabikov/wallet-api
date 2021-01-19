@@ -27,8 +27,8 @@ public class SqlTransactionDao implements TransactionDao {
     }
 
     @Override
-    public List<Transaction> getAllTransactions(int accountNumber) {
-        return transactionDb.query("SELECT * FROM transactions WHERE \"AccountNumber\" = ?",
-                Mappers.transactionRowMapper, accountNumber);
+    public Transaction[] getAllTransactions(int accountNumber) {
+        return (Transaction[]) transactionDb.query("SELECT * FROM transactions WHERE \"AccountNumber\" = ?",
+                Mappers.transactionRowMapper, accountNumber).toArray();
     }
 }
