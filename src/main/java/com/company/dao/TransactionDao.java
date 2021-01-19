@@ -1,8 +1,6 @@
-package core.dao;
+package com.company.dao;
 
-import core.models.Transaction;
-
-import java.util.List;
+import com.company.core.models.Transaction;
 
 public interface TransactionDao {
     void createTransaction(int accountNumber, Transaction transaction);

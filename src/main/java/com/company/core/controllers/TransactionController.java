@@ -1,12 +1,10 @@
-package core.controllers;
+package com.company.core.controllers;
 
-import core.dao.AccountDao;
-import core.dao.TransactionDao;
-import core.exceptions.AccountNotFoundException;
-import core.models.Transaction;
+import com.company.dao.AccountDao;
+import com.company.dao.TransactionDao;
+import com.company.core.exceptions.AccountNotFoundException;
+import com.company.core.models.Transaction;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/v1/accounts/{accountNumber}")

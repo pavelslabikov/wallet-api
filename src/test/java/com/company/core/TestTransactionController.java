@@ -1,9 +1,9 @@
-package core;
+package com.company.core;
 
-import core.dao.AccountDao;
-import core.dao.TransactionDao;
-import core.models.Account;
-import core.models.Transaction;
+import com.company.dao.AccountDao;
+import com.company.dao.TransactionDao;
+import com.company.core.models.Account;
+import com.company.core.models.Transaction;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
-package core;
+package com.company.core;
 
-import core.dao.AccountDao;
-import core.models.Account;
+import com.company.dao.AccountDao;
+import com.company.core.models.Account;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

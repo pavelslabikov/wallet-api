@@ -1,7 +1,7 @@
-package core.dao.sql;
+package com.company.dao.sql;
 
-import core.models.Account;
-import core.models.Transaction;
+import com.company.core.models.Account;
+import com.company.core.models.Transaction;
 import org.springframework.jdbc.core.RowMapper;
 
 

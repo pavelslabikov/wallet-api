@@ -1,14 +1,12 @@
-package core.dao.sql;
+package com.company.dao.sql;
 
-import core.dao.AccountDao;
-import core.models.Account;
+import com.company.dao.AccountDao;
+import com.company.core.models.Account;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @Primary
@@ -26,8 +24,9 @@ public class SqlAccountDao implements AccountDao {
     }
 
     @Override
-    public void deleteAccountByNumber(int number) {
-        accountDb.update("DELETE FROM accounts WHERE \"AccountNumber\" = ?", number);
+    public void deleteAccount(Account account) {
+        accountDb.update("DELETE FROM accounts WHERE \"AccountNumber\" = ?",
+                account.getNumber());
     }
 
     @Override
@@ -45,8 +44,8 @@ public class SqlAccountDao implements AccountDao {
 
     @Override
     public Account[] getAllAccounts() {
-        return (Account[]) accountDb.query("SELECT * FROM accounts", Mappers.accountRowMapper)
-                .toArray();
+        return (Account[]) accountDb.query("SELECT * FROM accounts",
+                Mappers.accountRowMapper).toArray();
     }
 
     @Override

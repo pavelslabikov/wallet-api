@@ -1,6 +1,6 @@
-package core.configurations;
+package com.company.configurations;
 
-import core.models.Account;
+import com.company.core.models.Account;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

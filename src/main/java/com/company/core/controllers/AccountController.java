@@ -1,12 +1,10 @@
-package core.controllers;
+package com.company.core.controllers;
 
-import core.dao.AccountDao;
-import core.exceptions.AccountAlreadyExistException;
-import core.exceptions.AccountNotFoundException;
-import core.models.Account;
+import com.company.dao.AccountDao;
+import com.company.core.exceptions.AccountAlreadyExistException;
+import com.company.core.exceptions.AccountNotFoundException;
+import com.company.core.models.Account;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/v1/accounts")
@@ -41,6 +39,10 @@ public class AccountController {
 
     @DeleteMapping("{number}")
     public void deleteAccount(@PathVariable int number) {
-        accountDao.deleteAccountByNumber(number);
+        var foundAccount = accountDao.getByNumber(number);
+        if (foundAccount == null)
+            throw new AccountNotFoundException();
+
+        accountDao.deleteAccount(foundAccount);
     }
 }

@@ -1,13 +1,11 @@
-package core.dao;
+package com.company.dao;
 
-import core.models.Account;
+import com.company.core.models.Account;
 import org.springframework.lang.Nullable;
-
-import java.util.List;
 
 public interface AccountDao {
     void createAccount(Account account);
-    void deleteAccountByNumber(int number);
+    void deleteAccount(Account account);
     @Nullable Account getByNumber(int number);
     Account[] getAllAccounts();
     void updateAccount(Account account);

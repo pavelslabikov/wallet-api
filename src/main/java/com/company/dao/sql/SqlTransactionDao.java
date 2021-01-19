@@ -1,13 +1,11 @@
-package core.dao.sql;
+package com.company.dao.sql;
 
-import core.dao.TransactionDao;
-import core.models.Transaction;
+import com.company.dao.TransactionDao;
+import com.company.core.models.Transaction;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 @Primary
@@ -22,13 +20,13 @@ public class SqlTransactionDao implements TransactionDao {
     @Override
     public void createTransaction(int accountNumber, Transaction transaction) {
         transactionDb.update("INSERT INTO transactions VALUES (?, ?::transaction_type, ?, ?, ?)",
-                accountNumber, transaction.getType().getType(), transaction.getDate(), transaction.getAmount(),
+                accountNumber, transaction.getType().getName(), transaction.getDate(), transaction.getAmount(),
                 transaction.getDescription());
     }
 
     @Override
     public Transaction[] getAllTransactions(int accountNumber) {
-        return (Transaction[]) transactionDb.query("SELECT * FROM transactions WHERE \"AccountNumber\" = ?",
-                Mappers.transactionRowMapper, accountNumber).toArray();
+        return transactionDb.query("SELECT * FROM transactions WHERE \"AccountNumber\" = ?",
+                Mappers.transactionRowMapper, accountNumber).toArray(new Transaction[0]);
     }
 }
