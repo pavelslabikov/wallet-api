@@ -27,7 +27,7 @@ public class AccountController {
     }
 
     @GetMapping("/")
-    public List<Account> getAllAccounts() {
+    public Account[] getAllAccounts() {
         return accountDao.getAllAccounts();
     }
 

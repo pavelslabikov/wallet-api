@@ -20,7 +20,7 @@ public class TransactionController {
     }
 
     @GetMapping("transactions")
-    public List<Transaction> getTransactions(@PathVariable int accountNumber) {
+    public Transaction[] getTransactions(@PathVariable int accountNumber) {
         var account = accountDao.getByNumber(accountNumber);
         if (account == null)
             throw new AccountNotFoundException();
