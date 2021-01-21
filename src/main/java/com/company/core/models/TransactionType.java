@@ -13,7 +13,7 @@ public enum TransactionType {
     }
 
     @JsonValue
-    public String getName() {  // TODO: Rename
+    public String getName() {
         return name;
     }
 }

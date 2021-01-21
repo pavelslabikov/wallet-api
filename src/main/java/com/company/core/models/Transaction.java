@@ -23,7 +23,7 @@ public class Transaction {
                        @JsonProperty(value = "date", required = true) Date date,
                        @JsonProperty(value = "amount", required = true) float amount,
                        @JsonProperty("description") String description) {
-        this.type = TransactionType.valueOf(type.toUpperCase());  // TODO: Fix case
+        this.type = TransactionType.valueOf(type.toUpperCase());
         this.date = date;
         this.amount = amount;
         this.description = Objects.requireNonNullElse(description, "");
