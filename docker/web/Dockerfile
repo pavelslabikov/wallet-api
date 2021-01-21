@@ -1,4 +1,4 @@
-FROM maven
+FROM maven:latest
 COPY . /usr/src/wallet-api/
 WORKDIR /usr/src/wallet-api/
 EXPOSE 8080
