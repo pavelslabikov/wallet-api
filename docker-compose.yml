@@ -11,7 +11,6 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    restart: always
   db:
     container_name: postgres-db
     build:
@@ -21,8 +20,3 @@ services:
       - .env
     ports:
       - "5432:5432"
-    restart: always
-
-
-
-
