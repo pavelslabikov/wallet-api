@@ -22,6 +22,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>wallet-api</finalName>
+                </configuration>
             </plugin>
         </plugins>
     </build>

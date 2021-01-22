@@ -1,5 +1,10 @@
 #!/bin/bash
-project_name=$1
-echo "Trying to find ${project_name} jar file"
-find . -type f -depth -maxdepth 3 -iname "${project_name}*.jar" -exec java -jar {} \;
+set -e
+echo "Trying to find wallet-api.jar file"
+if [ -e "./target/wallet-api.jar" ]; then
+  echo "Executing java -jar wallet-api.jar"
+  java -jar ./target/wallet-api.jar
+else
+  echo "Unable to find executable jar file in ./target dir" && exit 1
+fi
 exit
