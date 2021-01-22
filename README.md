@@ -7,20 +7,20 @@ In order to make application work properly you have to set appropriate PostgreSQ
 POSTGRES_USER=your_username
 POSTGRES_DB=db_name
 POSTGRES_PASSWORD=your_password
-POSTGRES_HOST=db_host
+POSTGRES_HOST=db
 ```
 ### Note:
-- Migration to another SQL database is not supported yet.  
+- `POSTGRES_HOST` variable should reference database service name from `docker-compose.yml`.
+- Migration to another SQL database service is not supported yet.  
 - By default, application uses predefined SQL initialization script (`src/main/resources/db/scripts/init.sql`).
 It's not recommended to change its content.
 - All Dockerfiles are located in `docker` directory.
 ### Starting application: 
 ```
-$ docker-compose up -d --build --no-start .
-$ docker-compose start
+$ docker-compose up -d
 ```
 # Resources
-All requests must have header `Accept` with value `*/*` or `application/json`. 
+The web server is running on the `localhost:8080` host and port. All requests must have header `Accept` with value `*/*` or `application/json`. 
 ## Account
 ***JSON Representation:***  
 ```
