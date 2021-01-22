@@ -30,10 +30,9 @@ All requests must have header `Accept` with value `*/*` or `application/json`.
 }
 ```
 - **number** - unique account identifier *(required, non-negative)*
-- **balance** - current account balance *(required, can be negative)*
-###`/v1/accounts/{number}`  
-***Supported HTTP methods:*** `GET`, `DELETE`
-
+- **balance** - current account balance *(required, can be negative)*  
+### `/v1/accounts/{number}`  
+***Supported HTTP methods:*** `GET`, `DELETE`  
 ### `/v1/accounts/`
 ***Supported HTTP methods:*** `GET`, `POST`  
 ## Transaction  
@@ -58,7 +57,7 @@ All requests must have header `Accept` with value `*/*` or `application/json`.
 - ***PostgreSQL***
 - ***Docker***
 # TODOs
-- **Refactoring** and code reorganization *(in progress)*.
-- Adding more **test classes**.
-- Logging.
-- **OAuth 2.0** support.
+- ***Refactoring and code reorganization (in progress)***
+- ***Adding more test classes***
+- ***Logging***
+- ***OAuth 2.0 support***
