@@ -1,18 +1,18 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/pavelslabikov/wallet-api/badge)](https://www.codefactor.io/repository/github/pavelslabikov/wallet-api) &emsp; [![CircleCI](https://circleci.com/gh/pavelslabikov/wallet-api.svg?style=shield)](<LINK>)
+[![CodeFactor](https://www.codefactor.io/repository/github/pavelslabikov/wallet-api/badge)](https://www.codefactor.io/repository/github/pavelslabikov/wallet-api) &emsp; [![CircleCI](https://circleci.com/gh/pavelslabikov/wallet-api.svg?style=shield)](https://circleci.com/gh/pavelslabikov/wallet-api)
 # Wallet-API
-Simple REST-based application which can be used as API for bank transactions management.
+Simple REST-based application which can be used as an API for bank transactions management.
 # Launch
 In order to make application work properly you have to set appropriate PostgreSQL database credentials in `.env` file:
 ```
 POSTGRES_USER=your_username
-POSTGRES_DB=accounts
+POSTGRES_DB=db_name
 POSTGRES_PASSWORD=your_password
-POSTGRES_HOST=db
+POSTGRES_HOST=db_host
 ```
 ### Note:
 - Migration to another SQL database is not supported yet.  
-- By default, application uses predefined (`src/main/resources/db/scripts/init.sql`) SQL initialization script.
-It's not recommended changing its content.
+- By default, application uses predefined SQL initialization script (`src/main/resources/db/scripts/init.sql`).
+It's not recommended to change its content.
 - All Dockerfiles are located in `docker` directory.
 ### Starting application: 
 ```
